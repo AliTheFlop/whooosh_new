@@ -3,8 +3,17 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Rocket } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 export default function Hero() {
+    const router = useRouter();
+
+    const scrollToProjects = () => {
+        const projectsSection = document.getElementById('projects');
+        if (projectsSection) {
+            projectsSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
     return (
         <section className="relative w-full min-h-screen flex items-center justify-center pt-20 overflow-hidden">
             {/* Background gradient */}
@@ -48,8 +57,8 @@ export default function Hero() {
                         transition={{ duration: 0.6, delay: 0.4 }}
                         className="text-lg md:text-xl text-white/70 mb-12 max-w-3xl mx-auto"
                     >
-                        Secure More Leads With A Custom Website That's Built For
-                        Your Brand
+                        Secure More Leads With A Custom Website That&apos;s
+                        Built For Your Brand
                     </motion.p>
 
                     <motion.div
@@ -58,13 +67,17 @@ export default function Hero() {
                         transition={{ duration: 0.6, delay: 0.6 }}
                         className="flex flex-col sm:flex-row gap-4 justify-center"
                     >
-                        <Button className="h-12 px-8 bg-indigo-600 hover:bg-indigo-700 text-white">
+                        <Button
+                            className="h-12 px-8 bg-indigo-600 hover:bg-indigo-700 text-white"
+                            onClick={() => router.push('/contact')}
+                        >
                             Get Started
                             <ArrowRight className="ml-2 h-4 w-4" />
                         </Button>
                         <Button
                             variant="outline"
-                            className="h-12 px-8 border-white/20 text-white hover:bg-white/10"
+                            className="h-12 px-8 bg-transparent hover:bg-white/10 text-white border-white/20 hover:border-white/30"
+                            onClick={scrollToProjects}
                         >
                             View Our Work
                         </Button>

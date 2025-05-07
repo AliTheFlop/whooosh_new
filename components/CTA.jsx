@@ -3,8 +3,10 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useRouter } from 'next/navigation';
 
 export default function CTA() {
+    const router = useRouter();
     return (
         <section className="py-24 bg-[#111114] w-full relative overflow-hidden">
             {/* Background effects */}
@@ -38,10 +40,13 @@ export default function CTA() {
                                     Get Your Free Quote
                                 </h3>
                                 <p className="text-white/70 mb-4">
-                                    Tell us about your vision, and we'll show
-                                    you how to make it a reality.
+                                    Tell us about your vision, and we&apos;ll
+                                    show you how to make it a reality.
                                 </p>
-                                <Button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white">
+                                <Button
+                                    className="w-full bg-indigo-600 hover:bg-indigo-700 text-white"
+                                    onClick={() => router.push('/contact')}
+                                >
                                     Get Quote
                                     <ArrowRight className="ml-2 h-4 w-4" />
                                 </Button>
